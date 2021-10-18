@@ -3,9 +3,11 @@ package com.samet.kotlincountriesapp.adapter
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.navigation.Navigation
 import androidx.recyclerview.widget.RecyclerView
 import com.samet.kotlincountriesapp.R
 import com.samet.kotlincountriesapp.model.Country
+import com.samet.kotlincountriesapp.view.FeedFragmentDirections
 import kotlinx.android.synthetic.main.item_country.view.*
 
 class CountryAdapter(val countryList: ArrayList<Country>) :
@@ -24,6 +26,11 @@ class CountryAdapter(val countryList: ArrayList<Country>) :
         holder.view.name.text = countryList[position].countryName
         holder.view.region.text = countryList[position].countryRegion
 
+
+        holder.view.setOnClickListener {
+            val action = FeedFragmentDirections.actionFeedFragmentToCountryFragment()
+            Navigation.findNavController(it).navigate(action)
+        }
     }
 
     override fun getItemCount(): Int {
