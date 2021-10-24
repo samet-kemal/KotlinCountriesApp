@@ -1,6 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="selectedCountry"
+            type="com.samet.kotlincountriesapp.model.Country" />
+    </data>
+
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -14,7 +22,7 @@
             android:minHeight="200dp"
             android:paddingTop="10dp"
             android:scaleType="fitCenter"
-            android:src="@mipmap/ic_launcher_round"></ImageView>
+            android:downloadUrl="@{selectedCountry.imageUrl}"></ImageView>
 
         <TextView
             android:id="@+id/countryName"
@@ -23,7 +31,7 @@
             android:layout_below="@+id/countryImage"
             android:layout_centerHorizontal="true"
             android:layout_margin="7dp"
-            android:text="CountryName"
+            android:text="@{selectedCountry.countryName}"
             android:textSize="20sp"
             android:textStyle="bold"></TextView>
 
@@ -34,7 +42,7 @@
             android:layout_below="@+id/countryName"
             android:layout_centerHorizontal="true"
             android:layout_margin="7dp"
-            android:text="CountryName"
+            android:text="@{selectedCountry.countryCapital}"
             android:textSize="16sp"></TextView>
 
         <TextView
@@ -44,7 +52,7 @@
             android:layout_below="@+id/countryCapital"
             android:layout_centerHorizontal="true"
             android:layout_margin="7dp"
-            android:text="CountryName"
+            android:text="@{selectedCountry.countryRegion}"
             android:textSize="16sp"></TextView>
 
         <TextView
@@ -54,7 +62,7 @@
             android:layout_below="@+id/countryRegion"
             android:layout_centerHorizontal="true"
             android:layout_margin="7dp"
-            android:text="Currency"
+            android:text="@{selectedCountry.countryCurrency}"
             android:textSize="16sp"></TextView>
 
         <TextView
@@ -64,7 +72,7 @@
             android:layout_below="@+id/countryCurrency"
             android:layout_centerHorizontal="true"
             android:layout_margin="7dp"
-            android:text="Language"
+            android:text="@{selectedCountry.countryLanguage}"
             android:textSize="16sp"></TextView>
 
 
