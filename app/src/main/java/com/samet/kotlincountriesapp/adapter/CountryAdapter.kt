@@ -8,9 +8,11 @@ import androidx.recyclerview.widget.RecyclerView
 import com.samet.kotlincountriesapp.R
 import com.samet.kotlincountriesapp.model.Country
 import com.samet.kotlincountriesapp.view.FeedFragmentDirections
+import com.samet.kotlincountriesapp.viewmodel.util.downloadFromUrl
+import com.samet.kotlincountriesapp.viewmodel.util.placeholderProgressBar
 import kotlinx.android.synthetic.main.item_country.view.*
 
-class CountryAdapter(val countryList: ArrayList<Country>) :
+class CountryAdapter(private val countryList: ArrayList<Country>) :
     RecyclerView.Adapter<CountryAdapter.CountryViewHolder>() {
     class CountryViewHolder(var view: View) : RecyclerView.ViewHolder(view)
 
@@ -31,6 +33,11 @@ class CountryAdapter(val countryList: ArrayList<Country>) :
             val action = FeedFragmentDirections.actionFeedFragmentToCountryFragment()
             Navigation.findNavController(it).navigate(action)
         }
+
+        holder.view.imageView.downloadFromUrl(
+            countryList[position].imageUrl,
+            placeholderProgressBar(holder.view.context)
+        )
     }
 
     override fun getItemCount(): Int {
