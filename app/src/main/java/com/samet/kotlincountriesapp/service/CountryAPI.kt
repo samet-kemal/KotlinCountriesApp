@@ -7,7 +7,7 @@ import retrofit2.http.GET
 interface CountryAPI {
 
     //BASE URL
-    @GET("atilsamancioglu/IA19-DataSetCountries/master/countrydataset.json")
+    @GET("BASE_URL")
     fun getCountries(): Single<List<Country>>
 
 }
